@@ -35,7 +35,7 @@ def testing_DemoQA():
     browser.element("[for='hobbies-checkbox-3']").click()
     browser.element("#uploadPicture").send_keys(os.path.abspath("/IMG_1.jpg"))
 
-    # Address
+    # address
     browser.element("#currentAddress").type(address)
     browser.element("#react-select-3-input").type(state).press_enter()
     browser.element("#react-select-4-input").type(city).press_enter()
