@@ -43,6 +43,7 @@ def testing_DemoQA():
 
 #asserts
     browser.element(".form").should(have.text("VASYA"))
+    browser.element(".form").should(have.text("last_name"))
 
 
 
