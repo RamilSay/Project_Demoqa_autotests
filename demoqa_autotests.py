@@ -1,8 +1,8 @@
 import os
-from selene import browser, be, have
+from selene import browser, have
 
 
-def testing_DemoQA():
+def testing_demoQA():
     # Values for testing
     name = "Vasya"
     last_name = "Filin"
