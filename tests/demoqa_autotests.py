@@ -33,7 +33,7 @@ def testing_demoQA():
     browser.element("#subjectsInput").type("Physics").press_enter()
     browser.element("[for='hobbies-checkbox-1']").click()
     browser.element("[for='hobbies-checkbox-3']").click()
-    browser.element("#uploadPicture").send_keys(os.path.abspath("/IMG_1.jpg"))
+    browser.element("#uploadPicture").send_keys(os.path.abspath("resource/IMG_1.jpg"))
 
     # address
     browser.element("#currentAddress").type(address)
