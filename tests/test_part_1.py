@@ -1,8 +1,14 @@
 import os
 from selene import browser, have
 
+from model.pages.registration_page import RegistrationPage
 
-def testing_demoQA():
+
+def test_student_registration_form():
+    registration_page = RegistrationPage()
+    registration_page.open()
+
+
     # Values for testing
     name = "Vasya"
     last_name = "Filin"
@@ -13,6 +19,7 @@ def testing_demoQA():
     state = "NCR"
     city = "Delhi"
 
+    #WHEN
     browser.open("https://demoqa.com/automation-practice-form")
     browser.element("#firstName").type(name)
     browser.element("#lastName").type(last_name)
