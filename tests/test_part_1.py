@@ -22,9 +22,9 @@ def test_student_registration_form():
     #WHEN
     registration_page.first_name('Natali').last_name('Ivanova')
     registration_page.email('fortest@gmail.com')
+    registration_page.gender.click()
+    registration_page.mobile('9995557777')
 
-    browser.element("[for='gender-radio-1']").click()
-    browser.element("#userNumber").type(mobile)
 
     # date of birth
     browser.element("#dateOfBirthInput").click()
