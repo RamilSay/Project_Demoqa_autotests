@@ -24,7 +24,7 @@ def test_student_registration_form():
     registration_page.email('fortest@gmail.com')
     registration_page.gender.click()
     registration_page.mobile('9995557777')
-
+    registration_page.fill_date_of_birth()
 
     # date of birth
     browser.element("#dateOfBirthInput").click()
