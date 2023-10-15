@@ -10,19 +10,19 @@ def test_student_registration_form():
 
 
     # Values for testing
-    name = "Vasya"
-    last_name = "Filin"
-    e_mail = "fortest@gmail.com"
-    mobile = "9995557777"
-    hobbies = "Sports, Music"
-    address = "1-street, 7-house, 7-apartment"
-    state = "NCR"
-    city = "Delhi"
+    #name = "Vasya"
+    #last_name = "Filin"
+    #e_mail = "fortest@gmail.com"
+    #mobile = "9995557777"
+    #hobbies = "Sports, Music"
+    #address = "1-street, 7-house, 7-apartment"
+    #state = "NCR"
+    #city = "Delhi"
 
     #WHEN
-    registration_page.first_name('Natali')
-    browser.element("#lastName").type(last_name)
-    browser.element("#userEmail").type(e_mail)
+    registration_page.first_name('Natali').last_name('Ivanova')
+    registration_page.email('fortest@gmail.com')
+
     browser.element("[for='gender-radio-1']").click()
     browser.element("#userNumber").type(mobile)
 
