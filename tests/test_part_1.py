@@ -22,17 +22,12 @@ def test_student_registration_form():
     #WHEN
     registration_page.first_name('Natali').last_name('Ivanova')
     registration_page.email('fortest@gmail.com')
-    registration_page.gender.click()
-    registration_page.mobile('9995557777')
-    registration_page.fill_date_of_birth()
 
-    # date of birth
-    browser.element("#dateOfBirthInput").click()
-    browser.element(".react-datepicker__month-select").click()
-    browser.element(".react-datepicker__month-select [value='6']").click()
-    browser.element(".react-datepicker__year-select").click()
-    browser.element(".react-datepicker__year-select [value='1999']").click()
-    browser.element(".react-datepicker__day.react-datepicker__day--007").click()
+    registration_page.gender.click()
+
+    registration_page.mobile('9995557777')
+
+    registration_page.fill_date_of_birth('2000', '7', '1')
 
     # subjects & hobbies
     browser.element("#subjectsInput").type("Maths").press_enter()
