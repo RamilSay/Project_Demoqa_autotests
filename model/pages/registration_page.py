@@ -7,6 +7,5 @@ class RegistrationPage:
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
 
-
     def open(self):
         browser.open('/automation-practice-form')

@@ -20,8 +20,7 @@ def test_student_registration_form():
     city = "Delhi"
 
     #WHEN
-    browser.open("https://demoqa.com/automation-practice-form")
-    browser.element("#firstName").type(name)
+    registration_page.first_name('Natali')
     browser.element("#lastName").type(last_name)
     browser.element("#userEmail").type(e_mail)
     browser.element("[for='gender-radio-1']").click()
