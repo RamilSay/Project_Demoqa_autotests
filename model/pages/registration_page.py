@@ -6,7 +6,7 @@ class RegistrationPage:
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
-        self.gender = browser.element('[for='gender-radio-1']')
+        self.gender =
         self.mobile = browser.element('#userNumber')
 
     def open(self):

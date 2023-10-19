@@ -20,7 +20,8 @@ def test_student_registration_form():
     #city = "Delhi"
 
     #WHEN
-    registration_page.first_name('Natali').last_name('Ivanova')
+    registration_page.first_name.type('Natali')
+    registration_page.last_name.type('Ivanova')
     registration_page.email('fortest@gmail.com')
 
     registration_page.gender.click()
