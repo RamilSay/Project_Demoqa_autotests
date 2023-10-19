@@ -1,4 +1,4 @@
-from selene import browser
+from selene import browser, have
 
 
 class RegistrationPage:
@@ -6,7 +6,6 @@ class RegistrationPage:
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
-        self.gender = browser.element('[name=gender][value=Female]')
         self.mobile = browser.element('#userNumber')
 
     def open(self):
