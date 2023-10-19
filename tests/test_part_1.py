@@ -20,15 +20,15 @@ def test_student_registration_form():
     #city = "Delhi"
 
     #WHEN
-    registration_page.first_name('Natali')
-    registration_page.last_name('Ivanova')
+    registration_page.fill_first_name('Natali')
+    registration_page.fill_last_name('Ivanova')
     registration_page.email.type('fortest@gmail.com')
 
-    registration_page.gender.click()
+    browser.all('[name=gender]').element_by(have.value('Female')).element('..').click()
 
-    registration_page.mobile('9995557777')
+    registration_page.mobile.type('9995557777')
 
-    registration_page.fill_date_of_birth('2000', '7', '1')
+    registration_page.fill_date_of_birth('2000', '7', '01')
 
     # subjects & hobbies
     #browser.element("#subjectsInput").type("Maths").press_enter()
