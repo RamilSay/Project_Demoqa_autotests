@@ -9,6 +9,8 @@ class RegistrationPage:
         self.gender_female = browser.all('[name=gender]').element_by(have.value('Female')).element('..')
         self.mobile = browser.element('#userNumber')
         self.subject = browser.element("#subjectsInput")
+        self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
+        self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
 
     def open(self):
         browser.open('/automation-practice-form')
