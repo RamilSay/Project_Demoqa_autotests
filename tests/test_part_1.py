@@ -15,13 +15,17 @@ def test_student_registration_form():
     #WHEN
     registration_page.fill_first_name('Natali')
     registration_page.fill_last_name('Ivanova')
-    registration_page.email.type('fortest@gmail.com')
+    registration_page.fill_email('fortest@gmail.com')
 
     registration_page.gender_female.click()
 
     registration_page.mobile.type('9995557777')
 
     registration_page.fill_date_of_birth('2000', '7', '01')
+
+    registration_page.subject.type('Maths').press_enter().type('Physics').press_enter()
+
+
 
     # subjects & hobbies
     #browser.element("#subjectsInput").type("Maths").press_enter()
