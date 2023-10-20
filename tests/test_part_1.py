@@ -10,10 +10,6 @@ def test_student_registration_form():
 
 
     # Values for testing
-    #name = "Vasya"
-    #last_name = "Filin"
-    #e_mail = "fortest@gmail.com"
-    #mobile = "9995557777"
     #hobbies = "Sports, Music"
     #address = "1-street, 7-house, 7-apartment"
     #state = "NCR"
@@ -24,7 +20,7 @@ def test_student_registration_form():
     registration_page.fill_last_name('Ivanova')
     registration_page.email.type('fortest@gmail.com')
 
-    browser.all('[name=gender]').element_by(have.value('Female')).element('..').click()
+    registration_page.gender.click()
 
     registration_page.mobile.type('9995557777')
 
