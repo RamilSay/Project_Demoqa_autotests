@@ -1,6 +1,3 @@
-import os
-from selene import browser, have
-
 from model.pages.registration_page import RegistrationPage
 
 
@@ -20,7 +17,7 @@ def test_student_registration_form():
     registration_page.fill_last_name('Ivanova')
     registration_page.email.type('fortest@gmail.com')
 
-    registration_page.gender.click()
+    registration_page.gender_female.click()
 
     registration_page.mobile.type('9995557777')
 
