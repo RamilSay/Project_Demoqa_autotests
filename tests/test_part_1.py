@@ -15,7 +15,7 @@ def test_student_registration_form():
     #WHEN
     registration_page.fill_first_name('Natali')
     registration_page.fill_last_name('Ivanova')
-    registration_page.email.type('fortest@gmail.com')
+    registration_page.fill_email('fortest@gmail.com')
 
     registration_page.gender_female.click()
 
@@ -23,11 +23,16 @@ def test_student_registration_form():
 
     registration_page.fill_date_of_birth('2000', '7', '01')
 
+    registration_page.subject.type('Maths').press_enter().type('Physics').press_enter()
+
+    registration_page.hobbie_sport.click()
+    registration_page.hobbie_music.click()
+
+
+
     # subjects & hobbies
-    #browser.element("#subjectsInput").type("Maths").press_enter()
-    #browser.element("#subjectsInput").type("Physics").press_enter()
-    #browser.element("[for='hobbies-checkbox-1']").click()
-    #browser.element("[for='hobbies-checkbox-3']").click()
+
+
     #browser.element("#uploadPicture").send_keys(os.path.abspath("resource/IMG_1.jpg"))
     #
     ## address

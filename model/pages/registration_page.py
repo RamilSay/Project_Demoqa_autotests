@@ -8,6 +8,9 @@ class RegistrationPage:
         self.email = browser.element('#userEmail')
         self.gender_female = browser.all('[name=gender]').element_by(have.value('Female')).element('..')
         self.mobile = browser.element('#userNumber')
+        self.subject = browser.element("#subjectsInput")
+        self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
+        self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -17,6 +20,9 @@ class RegistrationPage:
 
     def fill_last_name(self, value):
         self.last_name.type(value)
+
+    def fill_email(self,value):
+        self.email.type(value)
 
     def fill_date_of_birth(self, year, month, day):
         browser.element('#dateOfBirthInput').click()
