@@ -1,3 +1,5 @@
+import os
+
 from selene import browser, have
 
 
@@ -11,6 +13,7 @@ class RegistrationPage:
         self.subject = browser.element("#subjectsInput")
         self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
         self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
+        self.picture = browser.element("#uploadPicture")
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -31,3 +34,6 @@ class RegistrationPage:
         browser.element(
             f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)'
         ).click()
+
+    def upload_picture(self):
+        self.picture.send_keys(os.path.abspath("resource/IMG_1.jpg"))
