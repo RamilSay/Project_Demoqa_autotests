@@ -29,9 +29,10 @@ def test_student_registration_form():
 
     registration_page.upload_picture()
 
+    registration_page.fill_address('1-street, 7-house, 7-apartment')
 
-    # browser.element("#currentAddress").type(address)
-    # browser.element("#react-select-3-input").type(state).press_enter()
+    registration_page.fill_state('NCR')
+    #
     # browser.element("#react-select-4-input").type(city).press_enter()
     # browser.element("#submit").press_enter()
 
