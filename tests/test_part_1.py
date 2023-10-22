@@ -32,9 +32,9 @@ def test_student_registration_form():
     registration_page.fill_address('1-street, 7-house, 7-apartment')
 
     registration_page.fill_state('NCR')
-    #
-    # browser.element("#react-select-4-input").type(city).press_enter()
-    # browser.element("#submit").press_enter()
+    registration_page.fill_city('Delhi')
+
+    registration_page.submit()
 
     ## asserts
     # browser.element(".table").should(have.text(name))
