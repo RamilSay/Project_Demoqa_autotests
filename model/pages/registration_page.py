@@ -1,6 +1,5 @@
 import os
-
-from selene import browser, have
+from selene import browser, have, command
 
 
 class RegistrationPage:
@@ -15,8 +14,6 @@ class RegistrationPage:
         self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
         self.picture = browser.element("#uploadPicture")
         self.address = browser.element("#currentAddress")
-
-
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -39,19 +36,20 @@ class RegistrationPage:
         ).click()
 
     def upload_picture(self):
-        self.picture.send_keys(os.path.abspath("resource/IMG_1.jpg"))
+        self.picture.send_keys(os.path.abspath('resource/IMG_1.jpg'))
 
     def fill_address(self, value):
         self.address.type(value)
 
     def fill_state(self, value):
-        browser.element("#react-select-3-input").type(value).press_enter()
+        browser.element('#react-select-3-input').type(value).press_enter()
 
     def fill_city(self, value):
-        browser.element("#react-select-4-input").type(value).press_enter()
+        browser.element('#react-select-4-input').type(value).press_enter()
 
     def submit(self):
-        browser.element("#submit").press_enter()
+        browser.element('#submit').perform(command.js.click)
 
-    def should_have_registered(self):
-        {}
+    @property
+    def registered_user_data(self):
+        return browser.element('.table').all('td').even
