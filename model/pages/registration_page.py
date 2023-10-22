@@ -14,6 +14,8 @@ class RegistrationPage:
         self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
         self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
         self.picture = browser.element("#uploadPicture")
+        self.address = browser.element("#currentAddress")
+        self.state = browser.element("#react-select-3-input")
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -24,7 +26,7 @@ class RegistrationPage:
     def fill_last_name(self, value):
         self.last_name.type(value)
 
-    def fill_email(self,value):
+    def fill_email(self, value):
         self.email.type(value)
 
     def fill_date_of_birth(self, year, month, day):
@@ -37,3 +39,9 @@ class RegistrationPage:
 
     def upload_picture(self):
         self.picture.send_keys(os.path.abspath("resource/IMG_1.jpg"))
+
+    def fill_address(self, value):
+        self.address.type(value)
+
+    def fill_state(self, value):
+        self.state.type(value).press_enter()
