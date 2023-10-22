@@ -1,4 +1,4 @@
-from model.pages.registration_page import RegistrationPage
+from pages.registration_page import RegistrationPage
 from selene import have
 
 
