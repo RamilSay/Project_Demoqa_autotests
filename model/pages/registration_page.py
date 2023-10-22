@@ -15,7 +15,8 @@ class RegistrationPage:
         self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
         self.picture = browser.element("#uploadPicture")
         self.address = browser.element("#currentAddress")
-        self.state = browser.element("#react-select-3-input")
+
+
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -44,4 +45,13 @@ class RegistrationPage:
         self.address.type(value)
 
     def fill_state(self, value):
-        self.state.type(value).press_enter()
+        browser.element("#react-select-3-input").type(value).press_enter()
+
+    def fill_city(self, value):
+        browser.element("#react-select-4-input").type(value).press_enter()
+
+    def submit(self):
+        browser.element("#submit").press_enter()
+
+    def should_have_registered(self):
+        {}
