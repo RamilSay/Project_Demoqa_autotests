@@ -1,6 +1,8 @@
 import os
 from selene import browser, have, command
 
+import tests
+
 
 class RegistrationPage:
     def __init__(self):
@@ -35,8 +37,12 @@ class RegistrationPage:
             f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)'
         ).click()
 
-    def upload_picture(self):
-        self.picture.send_keys(os.path.abspath('resource/IMG_1.jpg'))
+    def upload_picture(self, value):
+        self.picture.set_value(
+            os.path.abspath(
+                os.path.join(os.path.dirname(tests.__file__), f'resource/IMG_1.jpg')
+            )
+        )
 
     def fill_address(self, value):
         self.address.type(value)

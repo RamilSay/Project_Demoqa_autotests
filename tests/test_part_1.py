@@ -22,7 +22,7 @@ def test_student_registration_form():
     registration_page.hobbie_sport.click()
     registration_page.hobbie_music.click()
 
-    registration_page.upload_picture()
+    registration_page.upload_picture('IMG_1.jpg')
 
     registration_page.fill_address('1-street, 7-house, 7-apartment')
 
@@ -30,7 +30,6 @@ def test_student_registration_form():
     registration_page.fill_city('Delhi')
 
     registration_page.submit()
-
 
     # THEN
     registration_page.registered_user_data.should(
