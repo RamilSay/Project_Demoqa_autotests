@@ -1,6 +1,5 @@
 import os
 from selene import browser, have, command
-
 import tests
 
 
@@ -37,7 +36,7 @@ class RegistrationPage:
             f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)'
         ).click()
 
-    def upload_picture(self, value):
+    def upload_picture(self, s):
         self.picture.set_value(
             os.path.abspath(
                 os.path.join(os.path.dirname(tests.__file__), f'resource/IMG_1.jpg')
@@ -58,4 +57,4 @@ class RegistrationPage:
 
     @property
     def registered_user_data(self):
-        return browser.element('.table').all('td').even
+        return browser.element('.table').all("td").even

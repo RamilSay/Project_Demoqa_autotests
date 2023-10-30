@@ -15,7 +15,7 @@ def test_student_registration_form():
 
     registration_page.mobile.type('9995557777')
 
-    registration_page.fill_date_of_birth('2000', '7', '01')
+    registration_page.fill_date_of_birth('2000', '10', '01')
 
     registration_page.subject.type('Maths').press_enter().type('Physics').press_enter()
 
@@ -34,15 +34,14 @@ def test_student_registration_form():
     # THEN
     registration_page.registered_user_data.should(
         have.exact_texts(
-            'Natali',
-            'Ivanova',
+            'Natali Ivanova',
             'fortest@gmail.com',
             'Female',
             '9995557777',
-            '01 July, 2000',
-            'Maths',
-            'Physics',
+            '01 October,2000',
+            'Maths, Physics',
+            'Sports, Music',
             'IMG_1.jpg',
-            '1-street 7-house 7-apartment',
+            '1-street, 7-house, 7-apartment',
             'NCR Delhi')
     )
