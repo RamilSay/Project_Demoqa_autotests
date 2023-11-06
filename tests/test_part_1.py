@@ -27,7 +27,6 @@ def test_student_registration_form():
     registration_page.fill_address('1-street, 7-house, 7-apartment')
 
     registration_page.fill_state('NCR')
-    registration_page.fill_city('Delhi')
 
     registration_page.submit()
 
