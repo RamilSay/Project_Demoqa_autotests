@@ -38,7 +38,7 @@ def test_student_registration_form():
             'fortest@gmail.com',
             'Female',
             '9995557777',
-            '01 October,2000',
+            '01 November,2000',
             'Maths, Physics',
             'Sports, Music',
             'IMG_1.jpg',
