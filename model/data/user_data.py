@@ -25,9 +25,7 @@ class User:
     email: str
     gender: Gender
     mobile: int
-    birth_year: str
-    birth_month: str
-    birth_day: str
+    birth_date: date
     subjects: list[Subject]
     hobbies: list[Hobby]
     upload_filename: str
@@ -47,4 +45,6 @@ student = User(
     Hobby.sport.music,
     'IMG_1.jpg',
     '1-street, 7-house, 7-apartment',
-    'NCR Delhi')
+    'NCR',
+    'Delhi'
+)

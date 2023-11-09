@@ -2,6 +2,7 @@ import os
 from selene import browser, have, command
 
 import tests
+from model.data.user_data import User, student
 
 
 class RegistrationPage:
@@ -29,13 +30,17 @@ class RegistrationPage:
     def fill_email(self, value):
         self.email.type(value)
 
+    def set_gender(self, value):
+        browser.all('[name=gender]').element_by(have.value(value)).element('..').click()
+
+    def type_mobile(self, value):
+        self.mobile.type(value)
+
     def fill_date_of_birth(self, year, month, day):
         browser.element('#dateOfBirthInput').click()
-        browser.element('.react-datepicker__year-select').type(year)
-        browser.element('.react-datepicker__month-select').type(month)
-        browser.element(
-            f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)'
-        ).click()
+        browser.element(f".react-datepicker__month-select > option[value='{month - 1}']").click()
+        browser.element(f".react-datepicker__year-select > option[value='{year}']").click()
+        browser.element(f'.react-datepicker__day--0{day}').click()
 
     def upload_picture(self, s):
         self.picture.set_value(
@@ -55,6 +60,18 @@ class RegistrationPage:
 
     def submit(self):
         browser.element('#submit').perform(command.js.click)
+
+    def register(self, user: User):
+        self.fill_first_name(student.first_name)
+        self.fill_last_name(student.last_name)
+        self.email(student.email)
+        self.set_gender(student.gender)
+        self.mobile(student.mobile)
+        self.fill_date_of_birth(student.birth_date.strftime('%Y,%m,%d'))
+
+
+
+
 
     @property
     def registered_user_data(self):

@@ -6,7 +6,11 @@ def test_fill_form():
     registration_page.open()
 
     # WHEN
-    registration_page.fill_first_name('Natali')
+    registration_page.
+
+
+
+     fill_first_name('Natali'))
     registration_page.fill_last_name('Ivanova')
     registration_page.fill_email('fortest@gmail.com')
 
