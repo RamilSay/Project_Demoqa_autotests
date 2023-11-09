@@ -6,11 +6,10 @@ from model.data.user_data import User, student
 
 
 class RegistrationPage:
-    def __init__(self):
+    def __init__(self, value):
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
-        self.gender_female = browser.all('[name=gender]').element_by(have.value('Female')).element('..')
         self.mobile = browser.element('#userNumber')
         self.subject = browser.element("#subjectsInput")
         self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
