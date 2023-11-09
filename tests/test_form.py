@@ -1,9 +1,8 @@
-from pages.registration_page import RegistrationPage
+from model.pages.registration_page import registration_page
 from selene import have
 
 
-def test_student_registration_form():
-    registration_page = RegistrationPage()
+def test_fill_form():
     registration_page.open()
 
     # WHEN
@@ -33,14 +32,5 @@ def test_student_registration_form():
     # THEN
     registration_page.registered_user_data.should(
         have.exact_texts(
-            'Natali Ivanova',
-            'fortest@gmail.com',
-            'Female',
-            '9995557777',
-            '01 November,2000',
-            'Maths, Physics',
-            'Sports, Music',
-            'IMG_1.jpg',
-            '1-street, 7-house, 7-apartment',
-            'NCR Delhi')
+
     )

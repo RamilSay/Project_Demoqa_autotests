@@ -1,5 +1,6 @@
 import os
 from selene import browser, have, command
+
 import tests
 
 
@@ -58,3 +59,6 @@ class RegistrationPage:
     @property
     def registered_user_data(self):
         return browser.element('.table').all("td").even
+
+
+registration_page = RegistrationPage()
