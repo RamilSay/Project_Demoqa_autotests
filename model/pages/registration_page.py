@@ -6,7 +6,7 @@ from model.data.user_data import User, student
 
 
 class RegistrationPage:
-    def __init__(self, value):
+    def __init__(self):
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
@@ -19,6 +19,10 @@ class RegistrationPage:
 
     def open(self):
         browser.open('/automation-practice-form')
+
+    def close_banner(self):
+        browser.execute_script('document.querySelector("#fixedban").remove()')
+        return self
 
     def fill_first_name(self, value):
         self.first_name.type(value)
@@ -37,8 +41,8 @@ class RegistrationPage:
 
     def fill_date_of_birth(self, year, month, day):
         browser.element('#dateOfBirthInput').click()
-        browser.element(f".react-datepicker__month-select > option[value='{month - 1}']").click()
         browser.element(f".react-datepicker__year-select > option[value='{year}']").click()
+        browser.element(f".react-datepicker__month-select > option[value='{month - 1}']").click()
         browser.element(f'.react-datepicker__day--0{day}').click()
 
     def upload_picture(self, s):
@@ -66,7 +70,8 @@ class RegistrationPage:
         self.email(student.email)
         self.set_gender(student.gender)
         self.mobile(student.mobile)
-        self.fill_date_of_birth(student.birth_date.strftime('%Y,%m,%d'))
+        self.fill_date_of_birth(student.birth_date.strftime('%Y'), student.birth_date.strftime('%m'),
+                                student.birth_date.strftime('%d'))
 
 
 

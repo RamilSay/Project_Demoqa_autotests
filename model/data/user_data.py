@@ -46,5 +46,4 @@ student = User(
     'IMG_1.jpg',
     '1-street, 7-house, 7-apartment',
     'NCR',
-    'Delhi'
-)
+    'Delhi')
