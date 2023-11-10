@@ -24,10 +24,10 @@ class User:
     last_name: str
     email: str
     gender: Gender
-    mobile: int
+    mobile: str
     birth_date: date
-    subjects: list[Subject]
-    hobbies: list[Hobby]
+    subjects: Subject
+    hobbies: Hobby
     upload_filename: str
     address: str
     state: str
@@ -38,7 +38,7 @@ student = User(
     'Natali',
     'Ivanova',
     'fortest@gmail.com',
-    Gender.female.value,
+    Gender.female,
     '9995557777',
     date(2000, 11, 1),
     Subject.maths.physics,

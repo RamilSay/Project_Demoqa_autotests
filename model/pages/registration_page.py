@@ -11,9 +11,8 @@ class RegistrationPage:
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
         self.mobile = browser.element('#userNumber')
-        self.subject = browser.element("#subjectsInput")
-        self.hobbie_sport = browser.element("[for='hobbies-checkbox-1']")
-        self.hobbie_music = browser.element("[for='hobbies-checkbox-3']")
+        self.subject_ = browser.element("#subjectsInput")
+        self.hobbies_check = browser.all('.custom-checkbox')
         self.picture = browser.element("#uploadPicture")
         self.address = browser.element("#currentAddress")
 
@@ -38,6 +37,14 @@ class RegistrationPage:
 
     def type_mobile(self, value):
         self.mobile.type(value)
+
+    def type_subject(self, values):
+        for subject in values:
+            self.subject_.type(subject).press_enter()
+
+    def set_hobbies(self, values):
+        for hobby in values:
+            self.hobbies_check.element_by(have.exact_texts(hobby)).click()
 
     def fill_date_of_birth(self, year, month, day):
         browser.element('#dateOfBirthInput').click()
