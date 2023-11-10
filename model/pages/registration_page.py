@@ -1,8 +1,8 @@
 import os
+
 from selene import browser, have, command
 
 import tests
-from model.data.user_data import User, student
 
 
 class RegistrationPage:
@@ -71,14 +71,29 @@ class RegistrationPage:
     def submit(self):
         browser.element('#submit').perform(command.js.click)
 
-    def register(self, user: User):
+    def register(self, student):
         self.fill_first_name(student.first_name)
         self.fill_last_name(student.last_name)
         self.email(student.email)
         self.set_gender(student.gender)
         self.mobile(student.mobile)
-        self.fill_date_of_birth(student.birth_date.strftime('%Y'), student.birth_date.strftime('%m'),
-                                student.birth_date.strftime('%d'))
+        self.fill_date_of_birth(student.birth_date.strftime('%Y'),
+                                student.birth_date.strftime('%m'),
+                                student.birth_date.strftime('%d')
+                                )
+        self.upload_picture(student.upload_filename)
+        self.fill_address(student.address)
+        self.fill_state(student.state)
+        self.fill_city(student.city)
+        self.submit()
+
+
+    def should_registered_user(self, student):
+        browser.element('.table').all('td').even.should(
+            have.exact_texts(
+                f'{student}'
+            )
+        )
 
 
 
@@ -86,7 +101,7 @@ class RegistrationPage:
 
     @property
     def registered_user_data(self):
-        return browser.element('.table').all("td").even
+        return
 
 
 registration_page = RegistrationPage()
