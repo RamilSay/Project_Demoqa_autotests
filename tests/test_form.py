@@ -1,16 +1,12 @@
-from model.data.user_data import student
+from model.data.user import user
 from model.pages.registration_page import registration_page
-from selene import have
 
 
-def test_fill_form():
+def test_fill_form(browser_setup):
     registration_page.open()
 
     # WHEN
-    registration_page.register(student)
+    registration_page.register(user)
 
     # THEN
-    registration_page.registered_user_data.should(
-        have.exact_texts(
-
-    )
+    registration_page.should_registered_user(user)

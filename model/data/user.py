@@ -6,11 +6,7 @@ from datetime import date
 class Gender(Enum):
     male = 'Male'
     female = 'Female'
-
-
-class Subject(Enum):
-    maths = 'Maths'
-    physics = 'Physics'
+    other = 'Other'
 
 
 class Hobby(Enum):
@@ -26,7 +22,7 @@ class User:
     gender: Gender
     mobile: str
     birth_date: date
-    subjects: Subject
+    subjects: list
     hobbies: Hobby
     upload_filename: str
     address: str
@@ -34,16 +30,16 @@ class User:
     city: str
 
 
-student = User(
-    'Natali',
-    'Ivanova',
-    'fortest@gmail.com',
-    Gender.female,
-    '9995557777',
-    date(2000, 11, 1),
-    Subject.maths.physics,
-    Hobby.sport.music,
-    'IMG_1.jpg',
-    '1-street, 7-house, 7-apartment',
-    'NCR',
-    'Delhi')
+user = User(
+    first_name='Natali',
+    last_name='Ivanova',
+    email='fortest@gmail.com',
+    gender=Gender.female.value,
+    mobile='9995557777',
+    birth_date=date(2000, 11, 1),
+    subjects=['Maths', 'Physics'],
+    hobbies=Hobby.music.value,
+    upload_filename='IMG_1.jpg',
+    address='1-street, 7-house, 7-apartment',
+    state='NCR',
+    city='Delhi')

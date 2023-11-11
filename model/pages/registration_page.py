@@ -1,8 +1,9 @@
 import os
-
 from selene import browser, have, command
+from selene.core.command import js
 
 import tests
+from model.data.user import User
 
 
 class RegistrationPage:
@@ -12,12 +13,12 @@ class RegistrationPage:
         self.email = browser.element('#userEmail')
         self.mobile = browser.element('#userNumber')
         self.subject_ = browser.element("#subjectsInput")
-        self.hobbies_check = browser.all('.custom-checkbox')
         self.picture = browser.element("#uploadPicture")
         self.address = browser.element("#currentAddress")
 
     def open(self):
         browser.open('/automation-practice-form')
+        return self
 
     def close_banner(self):
         browser.execute_script('document.querySelector("#fixedban").remove()')
@@ -38,19 +39,20 @@ class RegistrationPage:
     def type_mobile(self, value):
         self.mobile.type(value)
 
+    def fill_date_of_birth(self, year, month, day):
+        browser.element('#dateOfBirthInput').click()
+        browser.element(f".react-datepicker__year-select > option[value='{year}']").click()
+        browser.element(f".react-datepicker__month-select > option[value='{month}']").click()
+        browser.element(f'.react-datepicker__day--0{day}').click()
+
     def type_subject(self, values):
         for subject in values:
             self.subject_.type(subject).press_enter()
 
     def set_hobbies(self, values):
         for hobby in values:
-            self.hobbies_check.element_by(have.exact_texts(hobby)).click()
-
-    def fill_date_of_birth(self, year, month, day):
-        browser.element('#dateOfBirthInput').click()
-        browser.element(f".react-datepicker__year-select > option[value='{year}']").click()
-        browser.element(f".react-datepicker__month-select > option[value='{month - 1}']").click()
-        browser.element(f'.react-datepicker__day--0{day}').click()
+            browser.element(f'//*[contains(text(),"{hobby}")]').perform(command=js.click)
+        return self
 
     def upload_picture(self, s):
         self.picture.set_value(
@@ -71,37 +73,41 @@ class RegistrationPage:
     def submit(self):
         browser.element('#submit').perform(command.js.click)
 
-    def register(self, student):
-        self.fill_first_name(student.first_name)
-        self.fill_last_name(student.last_name)
-        self.email(student.email)
-        self.set_gender(student.gender)
-        self.mobile(student.mobile)
-        self.fill_date_of_birth(student.birth_date.strftime('%Y'),
-                                student.birth_date.strftime('%m'),
-                                student.birth_date.strftime('%d')
-                                )
-        self.upload_picture(student.upload_filename)
-        self.fill_address(student.address)
-        self.fill_state(student.state)
-        self.fill_city(student.city)
+    def register(self, user: User):
+        self.fill_first_name(user.first_name)
+        self.fill_last_name(user.last_name)
+        self.fill_email(user.email)
+        self.set_gender(user.gender)
+        self.type_mobile(user.mobile)
+        self.fill_date_of_birth(user.birth_date.strftime('%Y'),
+                                user.birth_date.strftime('%m'),
+                                user.birth_date.strftime('%d'))
+        self.type_subject(user.subjects)
+        self.set_hobbies(user.hobbies)
+        self.upload_picture(user.upload_filename)
+        self.fill_address(user.address)
+        self.fill_state(user.state)
+        self.fill_city(user.city)
+
         self.submit()
 
-
-    def should_registered_user(self, student):
+    def should_registered_user(self, user: User):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
-                f'{student}'
+                f'{user.first_name} {user.last_name}',
+                user.email,
+                user.gender,
+                user.mobile,
+                f'{user.birth_date.strftime("%Y")}',
+                f'{user.birth_date.strftime("%m")}',
+                f'{user.birth_date.strftime("%d")}',
+                user.subjects,
+                user.hobbies,
+                user.upload_filename,
+                user.address,
+                f'{user.state} {user.city}'
             )
         )
-
-
-
-
-
-    @property
-    def registered_user_data(self):
-        return
 
 
 registration_page = RegistrationPage()
