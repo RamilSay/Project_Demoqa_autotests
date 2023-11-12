@@ -49,9 +49,8 @@ class RegistrationPage:
         for subject in values:
             self.subject_.type(subject).press_enter()
 
-    def set_hobbies(self, values):
-        for hobby in values:
-            browser.element(f'//*[contains(text(),"{hobby}")]').perform(command=js.click)
+    def set_hobbies(self, value):
+        browser.element(f'//*[contains(text(),"{value}")]').perform(command=js.click)
         return self
 
     def upload_picture(self, s):
@@ -98,9 +97,9 @@ class RegistrationPage:
                 user.email,
                 user.gender,
                 user.mobile,
-                f'{user.birth_date.strftime("%Y")}',
-                f'{user.birth_date.strftime("%m")}',
                 f'{user.birth_date.strftime("%d")}',
+                f'{user.birth_date.strftime("%m")}',
+                f'{user.birth_date.strftime("%Y")}',
                 user.subjects,
                 user.hobbies,
                 user.upload_filename,
