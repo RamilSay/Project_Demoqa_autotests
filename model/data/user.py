@@ -23,7 +23,7 @@ class User:
     mobile: str
     birth_date: date
     subjects: list
-    hobbies: Hobby
+    hobbies: list
     upload_filename: str
     address: str
     state: str
@@ -36,9 +36,9 @@ user = User(
     email='fortest@gmail.com',
     gender=Gender.female.value,
     mobile='9995557777',
-    birth_date=date(2000, 11, 1),
+    birth_date=date(2000, 10, 1),
     subjects=['Maths', 'Physics'],
-    hobbies=Hobby.music.value,
+    hobbies=[Hobby.sport, Hobby.music],
     upload_filename='IMG_1.jpg',
     address='1-street, 7-house, 7-apartment',
     state='NCR',

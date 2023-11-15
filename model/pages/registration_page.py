@@ -45,13 +45,14 @@ class RegistrationPage:
         browser.element(f".react-datepicker__month-select > option[value='{month}']").click()
         browser.element(f'.react-datepicker__day--0{day}').click()
 
-    def type_subject(self, values):
-        for subject in values:
-            self.subject_.type(subject).press_enter()
+    def type_subject(self, subject):
+        self.subject_.type(subject).press_enter()
 
-    def set_hobbies(self, value):
-        browser.element(f'//*[contains(text(),"{value}")]').perform(command=js.click)
-        return self
+    def set_hobbies(self, hobby):
+        if hobby == 'Sports':
+            browser.element('[for="hobbies-checkbox-1"]').click()
+        elif hobby == 'Music':
+            browser.element('[for="hobbies-checkbox-3"]').click()
 
     def upload_picture(self, s):
         self.picture.set_value(
@@ -81,8 +82,10 @@ class RegistrationPage:
         self.fill_date_of_birth(user.birth_date.strftime('%Y'),
                                 user.birth_date.strftime('%m'),
                                 user.birth_date.strftime('%d'))
-        self.type_subject(user.subjects)
-        self.set_hobbies(user.hobbies)
+        self.type_subject(user.subjects[0])
+        self.type_subject(user.subjects[1])
+        self.set_hobbies(user.hobbies[0])
+        self.set_hobbies(user.hobbies[1])
         self.upload_picture(user.upload_filename)
         self.fill_address(user.address)
         self.fill_state(user.state)
