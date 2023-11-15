@@ -103,8 +103,8 @@ class RegistrationPage:
                 f'{user.birth_date.strftime("%d")}',
                 f'{user.birth_date.strftime("%m")}',
                 f'{user.birth_date.strftime("%Y")}',
-                user.subjects,
-                user.hobbies,
+                user.subjects_str,
+                user.hobbies_str,
                 user.upload_filename,
                 user.address,
                 f'{user.state} {user.city}'

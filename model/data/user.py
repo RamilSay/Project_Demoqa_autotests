@@ -29,6 +29,14 @@ class User:
     state: str
     city: str
 
+    @property
+    def subjects_str(self):
+        return ", ".join(self.subjects)
+
+    @property
+    def hobbies_str(self):
+        return ", ".join(self.hobbies)
+
 
 user = User(
     first_name='Natali',
