@@ -10,8 +10,8 @@ class Gender(Enum):
 
 
 class Hobby(Enum):
-    sport = 'Sport'
-    music = 'Music'
+    SPORTS = 'Sports'
+    MUSIC = 'Music'
 
 
 @dataclass
@@ -33,9 +33,9 @@ class User:
     def subjects_str(self):
         return ", ".join(self.subjects)
 
-    @property
-    def hobbies_str(self):
-        return ", ".join(self.hobbies)
+    #@property
+    #def hobbies_str(self):
+    #    return ", ".join(self.hobbies)
 
 
 user = User(
@@ -46,7 +46,7 @@ user = User(
     mobile='9995557777',
     birth_date=date(2000, 10, 1),
     subjects=['Maths', 'Physics'],
-    hobbies=[Hobby.sport, Hobby.music],
+    hobbies=[Hobby.SPORTS, Hobby.MUSIC],
     upload_filename='IMG_1.jpg',
     address='1-street, 7-house, 7-apartment',
     state='NCR',

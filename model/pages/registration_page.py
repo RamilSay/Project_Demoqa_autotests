@@ -48,11 +48,11 @@ class RegistrationPage:
     def type_subject(self, subject):
         self.subject_.type(subject).press_enter()
 
-    def set_hobbies(self, hobby):
-        if hobby == 'Sports':
-            browser.element('[for="hobbies-checkbox-1"]').click()
-        elif hobby == 'Music':
-            browser.element('[for="hobbies-checkbox-3"]').click()
+    def set_hobbies(self, value):
+        if value == 'Sports':
+            browser.all('[for^="hobbies-checkbox-1"]').element_by(have.exact_text(value)).click()
+        elif value == 'Music':
+            browser.all('[for^="hobbies-checkbox-3"]').element_by(have.exact_text(value)).click()
 
     def upload_picture(self, s):
         self.picture.set_value(
@@ -104,7 +104,7 @@ class RegistrationPage:
                 f'{user.birth_date.strftime("%m")}',
                 f'{user.birth_date.strftime("%Y")}',
                 user.subjects_str,
-                user.hobbies_str,
+                user.hobbies,
                 user.upload_filename,
                 user.address,
                 f'{user.state} {user.city}'
