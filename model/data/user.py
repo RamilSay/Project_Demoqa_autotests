@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import StrEnum
-import datetime
+from datetime import date
 
 
 class Gender(StrEnum):
@@ -21,7 +21,7 @@ class User:
     email: str
     gender: Gender
     mobile: str
-    birth_date: datetime.date
+    birth_date: date
     subjects: list
     hobbies: list
     upload_filename: str
@@ -49,7 +49,7 @@ user = User(
     email='fortest@gmail.com',
     gender=Gender.female,
     mobile='9995557777',
-    birth_date=datetime.date(2000, 10, 1),
+    birth_date=date(2000, 11, 1),
     subjects=['Maths', 'Physics'],
     hobbies=[Hobby.Sports, Hobby.Music],
     upload_filename='IMG_1.jpg',
