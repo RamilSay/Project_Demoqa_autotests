@@ -1,6 +1,5 @@
 import os
 from selene import browser, have, command
-from selene.core.command import js
 
 import tests
 from model.data.user import User
@@ -39,20 +38,20 @@ class RegistrationPage:
     def type_mobile(self, value):
         self.mobile.type(value)
 
-    def fill_date_of_birth(self, year, month, day):
+    def fill_date_of_birth(self, birth_date):
         browser.element('#dateOfBirthInput').click()
-        browser.element(f".react-datepicker__year-select > option[value='{year}']").click()
-        browser.element(f".react-datepicker__month-select > option[value='{month}']").click()
-        browser.element(f'.react-datepicker__day--0{day}').click()
+        browser.element('.react-datepicker__year-select').type(birth_date.strftime('%Y'))
+        browser.element('.react-datepicker__month-select').type(birth_date.strftime('%B'))
+        browser.element(f'.react-datepicker__day--00{birth_date.day}').click()
 
     def type_subject(self, subject):
         self.subject_.type(subject).press_enter()
 
     def set_hobbies(self, value):
         if value == 'Sports':
-            browser.all('[for^="hobbies-checkbox-1"]').element_by(have.exact_text(value)).click()
+            browser.element('[for="hobbies-checkbox-1"]').click()
         elif value == 'Music':
-            browser.all('[for^="hobbies-checkbox-3"]').element_by(have.exact_text(value)).click()
+            browser.element('[for="hobbies-checkbox-3"]').click()
 
     def upload_picture(self, s):
         self.picture.set_value(
@@ -79,9 +78,7 @@ class RegistrationPage:
         self.fill_email(user.email)
         self.set_gender(user.gender)
         self.type_mobile(user.mobile)
-        self.fill_date_of_birth(user.birth_date.strftime('%Y'),
-                                user.birth_date.strftime('%m'),
-                                user.birth_date.strftime('%d'))
+        self.fill_date_of_birth(user.birth_date)
         self.type_subject(user.subjects[0])
         self.type_subject(user.subjects[1])
         self.set_hobbies(user.hobbies[0])
@@ -100,11 +97,9 @@ class RegistrationPage:
                 user.email,
                 user.gender,
                 user.mobile,
-                f'{user.birth_date.strftime("%d")}',
-                f'{user.birth_date.strftime("%m")}',
-                f'{user.birth_date.strftime("%Y")}',
+                user.birth_date_str,
                 user.subjects_str,
-                user.hobbies,
+                user.hobbies_str,
                 user.upload_filename,
                 user.address,
                 f'{user.state} {user.city}'
