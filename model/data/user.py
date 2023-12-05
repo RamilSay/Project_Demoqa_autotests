@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import StrEnum
 from datetime import date
+from typing import List
 
 
 class Gender(StrEnum):
@@ -10,8 +11,8 @@ class Gender(StrEnum):
 
 
 class Hobby(StrEnum):
-    Sports = 'Sports'
-    Music = 'Music'
+    SPORTS = 'Sports'
+    MUSIC = 'Music'
 
 
 @dataclass
@@ -23,7 +24,7 @@ class User:
     mobile: str
     birth_date: date
     subjects: list
-    hobbies: list
+    hobbies: List[Hobby]
     upload_filename: str
     address: str
     state: str
@@ -32,7 +33,6 @@ class User:
     @property
     def birth_date_str(self):
         return self.birth_date.strftime('%d %B,%Y')
-
 
     @property
     def subjects_str(self):
@@ -51,7 +51,7 @@ user = User(
     mobile='9995557777',
     birth_date=date(2000, 11, 1),
     subjects=['Maths', 'Physics'],
-    hobbies=[Hobby.Sports, Hobby.Music],
+    hobbies=[Hobby.SPORTS, Hobby.MUSIC],
     upload_filename='IMG_1.jpg',
     address='1-street, 7-house, 7-apartment',
     state='NCR',
