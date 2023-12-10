@@ -8,7 +8,7 @@ from model.pages.registration_page import registration_page
 @allure.severity(Severity.CRITICAL)
 @allure.feature('Раздел Practice Form')
 @allure.story('Пользователь заполняет форму регистрации тестовыми данными')
-def test_fill_form(browser_setup):
+def test_fill_form(setup_browser):
     registration_page.open()
 
     # WHEN
