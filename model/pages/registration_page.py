@@ -81,8 +81,7 @@ class RegistrationPage:
         self.fill_date_of_birth(user.birth_date)
         self.type_subject(user.subjects[0])
         self.type_subject(user.subjects[1])
-        self.set_hobbies(user.hobbies[0])
-        self.set_hobbies(user.hobbies[1])
+        self.set_hobbies(user.hobbies.value)
         self.upload_picture(user.upload_filename)
         self.fill_address(user.address)
         self.fill_state(user.state)
@@ -95,7 +94,7 @@ class RegistrationPage:
             have.exact_texts(
                 f'{user.first_name} {user.last_name}',
                 user.email,
-                user.gender,
+                user.gender_str,
                 user.mobile,
                 user.birth_date_str,
                 user.subjects_str,
