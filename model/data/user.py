@@ -1,16 +1,16 @@
 from dataclasses import dataclass
-from enum import StrEnum
+from enum import Enum
 from datetime import date
 from typing import List
 
 
-class Gender(StrEnum):
-    male = 'Male'
-    female = 'Female'
-    other = 'Other'
+class Gender(Enum):
+    MALE = 'Male'
+    FEMALE = 'Female'
+    OTHER = 'Other'
 
 
-class Hobby(StrEnum):
+class Hobby(Enum):
     SPORTS = 'Sports'
     MUSIC = 'Music'
 
@@ -30,6 +30,10 @@ class User:
     state: str
     city: str
 
+    #@property
+    #def gender_str(self):
+    #    return ", ".join(self.gender)
+
     @property
     def birth_date_str(self):
         return self.birth_date.strftime('%d %B,%Y')
@@ -47,11 +51,11 @@ user = User(
     first_name='Natali',
     last_name='Ivanova',
     email='fortest@gmail.com',
-    gender=Gender.female,
+    gender=Gender.FEMALE.value,
     mobile='9995557777',
     birth_date=date(2000, 11, 1),
     subjects=['Maths', 'Physics'],
-    hobbies=[Hobby.SPORTS, Hobby.MUSIC],
+    hobbies=[Hobby.SPORTS.value, Hobby.MUSIC.value],
     upload_filename='IMG_1.jpg',
     address='1-street, 7-house, 7-apartment',
     state='NCR',

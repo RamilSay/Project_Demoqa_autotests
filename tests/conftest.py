@@ -1,10 +1,11 @@
 import pytest
 
-from selene import browser
+from selene import browser, Browser, Config
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 from utils import attach
+
 
 @pytest.fixture(scope='function')
 def setup_browser():
@@ -23,14 +24,14 @@ def setup_browser():
         }
     }
     options.capabilities.update(selenoid_capabilities)
+
     driver = webdriver.Remote(
-        command_executor=f'https://user1:1234@selenoid.autotests.cloud/wd/hub',
+        command_executor='https://user1:1234@selenoid.autotests.cloud/wd/hub',
         options=options
     )
+    browser_ = Browser(Config(driver))
 
-    browser.config.driver = driver
-
-    yield
+    yield browser_
 
     attach.add_screenshot(browser)
     attach.add_logs(browser)

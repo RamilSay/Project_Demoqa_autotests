@@ -33,7 +33,7 @@ class RegistrationPage:
         self.email.type(value)
 
     def set_gender(self, value):
-        browser.all('[name=gender]').element_by(have.value(value)).element('..').click()
+        browser.element('#genterWrapper').element(f'[value="{value}"]').double_click()
 
     def type_mobile(self, value):
         self.mobile.type(value)
