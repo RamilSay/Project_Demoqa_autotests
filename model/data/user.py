@@ -5,9 +5,9 @@ from typing import List
 
 
 class Gender(Enum):
-    male = 'Male'
-    female = 'Female'
-    other = 'Other'
+    MALE = 'Male'
+    FEMALE = 'Female'
+    OTHER = 'Other'
 
 
 class Hobby(Enum):
@@ -24,15 +24,15 @@ class User:
     mobile: str
     birth_date: date
     subjects: list
-    hobbies: Hobby
+    hobbies: List[Hobby]
     upload_filename: str
     address: str
     state: str
     city: str
 
-    @property
-    def gender_str(self):
-        return ", ".join(self.gender)
+    #@property
+    #def gender_str(self):
+    #    return ", ".join(self.gender)
 
     @property
     def birth_date_str(self):
@@ -51,11 +51,11 @@ user = User(
     first_name='Natali',
     last_name='Ivanova',
     email='fortest@gmail.com',
-    gender=Gender.female.value,
+    gender=Gender.FEMALE.value,
     mobile='9995557777',
     birth_date=date(2000, 11, 1),
     subjects=['Maths', 'Physics'],
-    hobbies=Hobby.SPORTS.value, Hobby.MUSIC.value,
+    hobbies=[Hobby.SPORTS.value, Hobby.MUSIC.value],
     upload_filename='IMG_1.jpg',
     address='1-street, 7-house, 7-apartment',
     state='NCR',
